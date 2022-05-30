@@ -8,8 +8,11 @@
 let score = 0;
 let gameOver = false;
 
+const difficultyLevel = document.querySelector("[name='difficulty']");
 const btnNewGame = document.getElementById("btn-new-game");
-btnNewGame.addEventListener("click", function (){
+
+// Pulante Nuova partita. Resetta il punteggio e rigenera la griglia da capo.
+btnNewGame.addEventListener("click", function () {
     score = 0;
     gameOver = false;
     generateGrid();
@@ -35,6 +38,9 @@ function generateBombsList(maxNumber) {
  * con le eventuai bombe
  */
 function generateGrid() {
+
+const chosenlevel = difficultyLevel.value;
+
     // Numero totale di celle da creare
     const totCells = 10 * 10;
 
