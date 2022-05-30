@@ -29,7 +29,7 @@ function createGrid(xCells, yCells) {
         gridContainer.append(cell);
         // Se clickata, la cella diventa blu.
         cell.addEventListener("click", function(){
-            cell.classList.add("click-blue");
+            cell.classList.toggle("click-blue");
         })
     }
 }
