@@ -33,5 +33,5 @@ function createGrid(xCells, yCells) {
         })
     }
 }
-
+// Creo una griglia 10x10 utilizzando la funzione appena creata.
 createGrid (10, 10);
