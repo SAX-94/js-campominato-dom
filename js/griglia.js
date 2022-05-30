@@ -10,7 +10,9 @@ function generateBombsList(maxNumber) {
     const bombsList = []
 
     do {
+        // Creo il numro random
         const randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+        // Lo aggoungo all'array solo se non esiste già al suo interno
         if (!bombsList.includes(randomNumber)) {
             bombsList.push(randomNumber);
         }
