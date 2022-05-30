@@ -16,9 +16,9 @@ function createGrid(xCells, yCells) {
     // @ts-ignore
     gridContainer.style.width = `calc(var(--cell-size) * ${xCells})`;
 
-    for (let i = 0; i < cellsNumber; i++) {
+    for (let i = 1; i <= cellsNumber; i++) {
         // Creo un numero che incrementa di 1 a ogni ciclo.
-        const cellNumber = i + 1 ;
+        const cellNumber =+ i;
         // Creo un div per ogni cella.
         const cell = document.createElement("div");
         // Finché non assegno la classe "cell" ai div, essi rimangono contenitori vuoti e invisibili.
