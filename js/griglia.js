@@ -8,6 +8,13 @@
 let score = 0;
 let gameOver = false;
 
+const btnNewGame = document.getElementById("btn-new-game");
+btnNewGame.addEventListener("click", function (){
+    score = 0;
+    gameOver = false;
+    generateGrid();
+})
+
 // Devo creare una funzione che generi le bombe, ovvero N numeri random unici.
 function generateBombsList(maxNumber) {
     const bombsList = []
@@ -44,13 +51,14 @@ function generateGrid() {
     - Avvisa l'utente che ha perso la partita
     - Mostra il punteggio
 */
-function alertGameOver () {
+function alertGameOver() {
     alert(`Game over! Hai totalizzato ${score} punti.`)
 }
 
 // Creo la funzione che stampa in HTMl la griglia.
 function renderGrid(totCells, bombsList) {
     const gridContainer = document.querySelector(".grid-container")
+    gridContainer.innerHTML = "";
     // @ts-ignore
     gridContainer.style.width = `calc(var(--cell-size) * 10)`;
     // Ciclo che genera il numero di celle richieste
@@ -69,10 +77,10 @@ function renderGrid(totCells, bombsList) {
         // Aggiungo l'event listener al click sulla cella
         cell.addEventListener("click", function () {
             if (
-                this.classList.contains("bomb") || 
-                this.classList.contains("click-blue") || 
+                this.classList.contains("bomb") ||
+                this.classList.contains("click-blue") ||
                 gameOver
-                ) {
+            ) {
                 // Inibisco l'azione del click, impedendo all'utente di continuare a giocare.
                 return;
             }
