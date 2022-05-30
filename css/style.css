@@ -20,6 +20,10 @@ body {
     background-color: var(--click-cell-color)
 }
 
+.cell.bomb {
+    background-color: red;
+}
+
 /******************************
     SITE SECTIONS
 *******************************/

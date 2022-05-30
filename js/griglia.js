@@ -50,11 +50,20 @@ function renderGrid(totCells, bombsList) {
         // Il comando seguente creerà un attributo data-indice che conterrà il numero della cella (i)
         // @ts-ignore
         cell.dataset.indice = i;
+        /* if (bombsList.includes(i)) {
+            // L'attributo seguente "data-bomb" permette di identificare le celle con le bombe aprendo l'inspector, ma pemetterebbe ad un utente competente di barare.
+            cell.dataset.bomb = true;
+        } */
         // Aggiungo l'event listener al click sulla cella
         cell.addEventListener("click", function () {
             // const cellIndex = parseInt(this.dataset.indice) | parseInt e parseFloat posono essere sostituiti dal + davanti alla  variabile che vogliamo convertire in number (di solito da stringa)
             const cellIndex = +this.dataset.indice;
-            // aggungo il console.log per verificare che il listener funzioni
+
+            // Controllo se il numero della cella cliccata fa parte della lista delle bombe.
+            if (bombsList.includes(cellIndex)) {
+                cell.classList.add("bomb");
+            }
+            // aggiungo il console.log per verificare che il listener funzioni
             console.log("Cliccato cella numero " + cellIndex)
         })
         // Aggiungo la cella alla griglia
