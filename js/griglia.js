@@ -5,6 +5,9 @@
 // Appendo la cell al grid-container
 
 
+let score = 0;
+let gameOver = false;
+
 // Devo creare una funzione che generi le bombe, ovvero N numeri random unici.
 function generateBombsList(maxNumber) {
     const bombsList = []
@@ -37,6 +40,13 @@ function generateGrid() {
     renderGrid(totCells, bombsList);
 }
 
+/*
+    - Avvisa l'utente che ha perso la partita
+    - Mostra il punteggio
+*/
+function alertGameOver () {
+    alert(`Game over! Hai totalizzato ${score} punti.`)
+}
 
 // Creo la funzione che stampa in HTMl la griglia.
 function renderGrid(totCells, bombsList) {
@@ -58,14 +68,27 @@ function renderGrid(totCells, bombsList) {
         } */
         // Aggiungo l'event listener al click sulla cella
         cell.addEventListener("click", function () {
+            if (
+                this.classList.contains("bomb") || 
+                this.classList.contains("click-blue") || 
+                gameOver
+                ) {
+                // Inibisco l'azione del click, impedendo all'utente di continuare a giocare.
+                return;
+            }
             // const cellIndex = parseInt(this.dataset.indice) | parseInt e parseFloat posono essere sostituiti dal + davanti alla  variabile che vogliamo convertire in number (di solito da stringa)
             const cellIndex = +this.dataset.indice;
 
             // Controllo se il numero della cella cliccata fa parte della lista delle bombe.
             if (bombsList.includes(cellIndex)) {
                 cell.classList.add("bomb");
+                gameOver = true;
+                alertGameOver()
+            } else {
+                cell.classList.add("click-blue");
+                score++;
             }
-            // aggiungo il console.log per verificare che il listener funzioni
+            // aggiungo il console.log per verificare che l'event-listener funzioni
             console.log("Cliccato cella numero " + cellIndex)
         })
         // Aggiungo la cella alla griglia
