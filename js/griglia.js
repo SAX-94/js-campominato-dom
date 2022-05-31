@@ -39,7 +39,9 @@ function generateBombsList(maxNumber) {
  */
 function generateGrid() {
 
-const chosenlevel = difficultyLevel.value;
+// @ts-ignore
+const chosenLevel = difficultyLevel.value;
+console.log(chosenLevel);
 
     // Numero totale di celle da creare
     const totCells = 10 * 10;
